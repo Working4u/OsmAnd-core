@@ -74,7 +74,7 @@ struct RoutingSubregionTile {
 				orig->next = segment;
 			}
 		}
-		excludedIds.insert(o->id);
+		//excludedIds.insert(o->id);
 	}
 };
 
