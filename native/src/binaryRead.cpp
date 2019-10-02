@@ -94,8 +94,8 @@ void RouteDataObject::processConditionalTags(const tm& time) {
      for (uint32_t i = 0; i < sz; i++) {
         auto& r = region->quickGetEncodingRule(types[i]);
         if (r.conditional()) {
-			
-            uint32_t vl = r.conditionalValue(time);			
+            uint32_t vl = r.conditionalValue(time);	
+			OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info,">>[NATIVE]conditional rule: %d", vl);
             if(vl > 0) {
                 auto& rtr = region->quickGetEncodingRule(vl);
                 std::string nonCondTag = rtr.getTag();
