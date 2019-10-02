@@ -4,7 +4,7 @@
 #include "binaryRoutePlanner.h"
 #include "routingContext.h"
 #include <functional>
-
+#include "commonOsmAndCore.h"
 #include "Logging.h"
 
 //	static bool PRINT_TO_CONSOLE_ROUTE_INFORMATION_TO_TEST = true;
@@ -334,8 +334,10 @@ SHARED_PTR<RouteSegment> searchRouteInternal(RoutingContext* ctx, SHARED_PTR<Rou
 	OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Warning, "[Native] Result timing (time to load %.3f, time to calc %.3f, extra timer %.3f, loaded tiles %d) ", 
 			ctx->timeToLoad.GetElapsedMicros() / 1000000.0, ctx->timeToCalculate.GetElapsedMicros() / 1000000.0, 
 			ctx->timeExtra.GetElapsedMicros() / 1000000.0,  ctx->loadedTiles);
+	OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Debug, "[NATIVE] Time to add subregions excludedIds: %.3f sec, to check if RDO in excluded: %d micros", ctx->timeLoadExcluded.GetElapsedMicros()/1000000.0, ctx->timeCheckExcluded.GetElapsedMicros());		
 	int sz = calculateSizeOfSearchMaps(graphDirectSegments, graphReverseSegments, visitedDirectSegments, visitedOppositeSegments);
 	OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Warning, "[Native] Memory occupied (Routing context %d Kb, search %d Kb)", ctx->getSize()/ 1024, sz/1024);
+	OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Warning, "[Native] Conditional time1 %s", localtime(ctx->conditionalTime));
 	ctx->visitedSegments = visitedDirectSegments.size() + visitedOppositeSegments.size();
 	return finalSegment;
 }
