@@ -94,12 +94,12 @@ void RouteDataObject::processConditionalTags(const tm& time) {
      for (uint32_t i = 0; i < sz; i++) {
         auto& r = region->quickGetEncodingRule(types[i]);
         if (r.conditional()) {
-			OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "[NATIVE] RDO with conditional:  ");
+			
             uint32_t vl = r.conditionalValue(time);			
             if(vl > 0) {
                 auto& rtr = region->quickGetEncodingRule(vl);
                 std::string nonCondTag = rtr.getTag();
-				OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "	>>[NATIVE] tag: %s, value: %s ", nonCondTag, rtr.getValue());
+				OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "	>>[NATIVE] tag: %s, value: %s ", nonCondTag.c_str(), rtr.getValue().c_str());
                 uint32_t ks = 0;
                 for (; ks < sz; ks++) {
                     auto& toReplace = region->quickGetEncodingRule(types[ks]);
