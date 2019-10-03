@@ -313,6 +313,7 @@ struct RoutingContext {
 						if (*i != NULL) {
 							SHARED_PTR<RouteDataObject> o(*i);
 							if(conditionalTime != 0) {
+								OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info,">>[NATIVE]condition time here");
 								o->processConditionalTags(conditionalTimeStr);
 							}
 							if (acceptLine(o)) {
@@ -437,7 +438,7 @@ struct RoutingContext {
 				timeLoadExcluded.Start();
 				excludedIds.insert(subregions[j]->excludedIds.begin(), subregions[j]->excludedIds.end());
 				//excludedIdsBySubregion.push_back(subregions[j]->excludedIds);
-				timeLoadExcluded.Pause();
+				// timeLoadExcluded.Pause();
 			}
 		}
 		return original;
