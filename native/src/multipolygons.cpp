@@ -273,10 +273,9 @@ void combineMultipolygonLine(std::vector<coordinates>& completedRings, std::vect
 int safelyAddDelta(int number, int delta) {
 	int res = number + delta;
 	if (delta > 0 && res < number) {
-		OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "Before returning INT_MAX. Number: %d, delta %d", number, delta)
-		return INT_MAX;
+		OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "Before returning INT_MAX. Number: %d, delta %d", number, delta);		return INT_MAX;
 	} else if (delta < 0 && res > number) {
-		OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "Before returning INT_MIN. Number: %d, delta %d", number, delta)
+		OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "Before returning INT_MIN. Number: %d, delta %d", number, delta);
 		return INT_MIN;
 	}
 	return res;
