@@ -5,10 +5,10 @@
 #include "multipolygons.h"
 
 void printLine(OsmAnd::LogSeverityLevel level, std::string msg, int64_t id, coordinates& c,  int leftX, int rightX, int bottomY, int topY) {
-	if(true) {
-		// avoid printing for now
-		return;
-	}
+	// if(true) {
+	// 	// avoid printing for now
+	// 	return;
+	// }
 	if(c.size() == 0) {
 		return;
 	}
