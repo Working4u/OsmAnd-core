@@ -315,8 +315,11 @@ void unifyIncompletedRings(std::vector<std::vector<int_pair> >& toProccess, std:
 		int x = ir->at(ir->size() - 1).first;
 		int y = ir->at(ir->size() - 1).second;
 		// 31 - (zoom + 8)
-		const int EVAL_DELTA = 6 << (23 - zoom);
-		const int UNDEFINED_MIN_DIFF = -1 - EVAL_DELTA;
+		// int EVAL_DELTA = 6 << (23 - zoom);
+		// const int UNDEFINED_MIN_DIFF = -1 - EVAL_DELTA;
+		int EVAL_DELTA = 0;
+		int UNDEFUNED_MIN_DIFF = 0;
+
 		while (true) {
 			int st = 0; // st already checked to be one of the four
 			if (y == topY) {
