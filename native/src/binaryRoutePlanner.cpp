@@ -9,7 +9,7 @@
 
 //	static bool PRINT_TO_CONSOLE_ROUTE_INFORMATION_TO_TEST = true;
 
-static const bool TRACE_ROUTING = false;
+static const bool TRACE_ROUTING = true;
 static const double GPS_POSSIBLE_ERROR = 10;
 
 inline int roadPriorityComparator(float o1DistanceFromStart, float o1DistanceToEnd, float o2DistanceFromStart,
@@ -233,7 +233,7 @@ SHARED_PTR<RouteSegment> searchRouteInternal(RoutingContext* ctx, SHARED_PTR<Rou
 	int iterationsToUpdate = 0;
 	ctx->timeToCalculate.Start();
 	
-
+	
 	SegmentsComparator sgmCmp(ctx);
 	NonHeuristicSegmentsComparator nonHeuristicSegmentsComparator;
 	SEGMENTS_QUEUE graphDirectSegments(sgmCmp);
