@@ -91,7 +91,7 @@ void RoutingIndex::initRouteEncodingRule(uint32_t id, std::string tag, std::stri
 
 void RouteDataObject::processConditionalTags(const tm& time) {
      auto sz = types.size();
-	 OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "Rules count %d", sz);
+	 OsmAnd::LogPrintf(OsmAnd::LogSeverityLevel::Info, "Rules count %d", region->routeEncodingRules.size());
      for (uint32_t i = 0; i < sz; i++) {
         auto& r = region->quickGetEncodingRule(types[i]);
         if (r.conditional()) {
