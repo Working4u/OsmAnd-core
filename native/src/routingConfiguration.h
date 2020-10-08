@@ -124,6 +124,7 @@ public:
     }
 };
 
-SHARED_PTR<RoutingConfigurationBuilder> parseRoutingConfigurationFromXml(const char* filename);
+SHARED_PTR<RoutingConfigurationBuilder> parseFromInputStream(const char* filename);
+SHARED_PTR<RoutingConfigurationBuilder> getDefault();
 
 #endif /*_OSMAND_ROUTING_CONFIGURATION_H*/

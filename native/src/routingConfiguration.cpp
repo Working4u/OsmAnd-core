@@ -168,7 +168,7 @@ public:
     }
 };
 
-SHARED_PTR<RoutingConfigurationBuilder> parseRoutingConfigurationFromXml(const char* filename) {
+SHARED_PTR<RoutingConfigurationBuilder> parseFromInputStream(const char* filename) {
     
     XML_Parser parser = XML_ParserCreate(NULL);
     SHARED_PTR<RoutingConfigurationBuilder> config = std::make_shared<RoutingConfigurationBuilder>();
@@ -205,6 +205,19 @@ SHARED_PTR<RoutingConfigurationBuilder> parseRoutingConfigurationFromXml(const c
     fclose(file);
     
     return config;
+}
+
+SHARED_PTR<RoutingConfigurationBuilder> DEFAULT;
+
+SHARED_PTR<RoutingConfigurationBuilder> getDefault() {
+    if (DEFAULT == nullptr) {
+        try {
+            DEFAULT = parseFromInputStream("config.xml");
+        } catch(int e) {
+            //throw new IllegalStateException(e);
+        }
+    }
+    return  DEFAULT;
 }
 
 #endif /*_OSMAND_ROUTING_CONFIGURATION_CPP*/
